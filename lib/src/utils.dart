@@ -36,7 +36,7 @@ final Logger rpcLogger = new Logger('rpc');
 final ApiConfigSchema discoveryDocSchema =
     new ApiParser().parseSchema(reflectType(discovery.RestDescription), false);
 
-// Utility method for creating an HTTP error response given an expcetion.
+// Utility method for creating an HTTP error response given an exception.
 // Optionally drains the request body.
 Future<HttpApiResponse> httpErrorResponse(HttpApiRequest request,
                                           Exception error,
@@ -50,7 +50,7 @@ Future<HttpApiResponse> httpErrorResponse(HttpApiRequest request,
   } else {
     response =
         new HttpApiResponse.error(HttpStatus.INTERNAL_SERVER_ERROR,
-                                  'Unknown API Error.', error, stack);
+                                  'Unknown error occurred with API.', error, stack);
   }
   if (drainRequest) {
     // Drain the request before responding.
